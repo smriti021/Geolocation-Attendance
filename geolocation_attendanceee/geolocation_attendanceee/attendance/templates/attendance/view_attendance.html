@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Attendance</title>
+</head>
+<body>
+    <h1>Your Attendance Records</h1>
+    <table border="1">
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+        </tr>
+        {% for attendance in attendances %}
+        <tr>
+            <td>{{ attendance.timestamp|date:"Y-m-d" }}</td>
+            <td>{{ attendance.timestamp|time:"H:i:s" }}</td>
+            <td>{{ attendance.latitude }}</td>
+            <td>{{ attendance.longitude }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'mark_attendance' %}">Mark Attendance</a>
+    <br>
+    <a href="{% url 'logout' %}">Logout</a>  <!-- Logout link -->
+</body>
+</html>
